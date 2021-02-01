@@ -1,0 +1,30 @@
+.contactsSection {
+  margin: 0 auto 20px;
+  width: 320px;
+}
+
+.contactsTitle {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.findDescription {
+  font-weight: 700;
+}
+
+.input {
+  width: 162px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .contactsSection {
+    width: 420px;
+  }
+}
