@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import s from './ContactItem.module.css';
-import * as contactsOperations from '../../redux/contacts-operations';
+import * as contactsOperations from '../../redux/contacts/contacts-operations';
 
 const ContactItem = ({ contact }) => {
   const [isEdit, setIsEdit] = useState(false);

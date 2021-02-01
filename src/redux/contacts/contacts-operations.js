@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as actions from './actions';
+import * as actions from './contacts-actions';
 
 axios.defaults.baseURL = 'http://localhost:4040';
 

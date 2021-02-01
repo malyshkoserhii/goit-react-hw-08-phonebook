@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import Loader from 'react-loader-spinner';
-import * as contactsOperations from '../../redux/contacts-operations';
+import * as contactsOperations from '../../redux/contacts/contacts-operations';
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
