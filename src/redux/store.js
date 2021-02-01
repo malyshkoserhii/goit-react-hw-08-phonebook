@@ -8,7 +8,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import phonebookReducer from './reducer';
+import phonebookReducer from './contacts/contacts-reducer';
 
 const middleware =
   process.env.NODE_ENV === 'development'

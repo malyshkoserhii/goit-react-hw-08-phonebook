@@ -1,22 +1,28 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import * as contactsOperations from './redux/contacts-operations';
-import ContactForm from './components/ContactForm';
-import ContactList from './components/ContactList';
-import Filter from './components/Filter';
+import { Switch, Route } from 'react-router-dom';
+import AppBar from './components/AppBar';
+import HomeView from './views/HomeView';
+import RegisterView from './views/RegisterView';
+import LoginView from './views/LoginView';
+import ContactsView from './views/ContactsView';
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(contactsOperations.fetchContacts());
-  }, [dispatch]);
-
   return (
     <>
-      <ContactForm />
-      <Filter />
-      <ContactList />
+      <AppBar />
+      <Switch>
+        <Route exact path="/">
+          <HomeView />
+        </Route>
+        <Route path="/register">
+          <RegisterView />
+        </Route>
+        <Route path="/login">
+          <LoginView />
+        </Route>
+        <Route path="/contacts">
+          <ContactsView />
+        </Route>
+      </Switch>
     </>
   );
 };

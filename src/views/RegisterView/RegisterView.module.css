@@ -1,0 +1,14 @@
+.form {
+  margin: 0 auto;
+  width: 320px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.registrationPageTitle {
+  text-align: center;
+}
