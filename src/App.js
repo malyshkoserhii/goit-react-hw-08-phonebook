@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { authOperations } from './redux/auth';
 import AppBar from './components/AppBar';
+import PrivateRoute from './components/UserMenu/PrivateRoute';
 import HomeView from './views/HomeView';
 import RegisterView from './views/RegisterView';
 import LoginView from './views/LoginView';
@@ -28,9 +29,9 @@ const App = () => {
         <Route path="/login">
           <LoginView />
         </Route>
-        <Route path="/contacts">
+        <PrivateRoute path="/contacts">
           <ContactsView />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </>
   );
