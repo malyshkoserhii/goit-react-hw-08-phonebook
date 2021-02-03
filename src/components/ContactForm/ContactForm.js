@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
-import Loader from 'react-loader-spinner';
+import Spinner from '../Spinner';
 import * as contactsOperations from '../../redux/contacts/contacts-operations';
 import s from './ContactForm.module.css';
 
@@ -99,15 +99,7 @@ const ContactForm = () => {
         </button>
       </form>
       <div className={s.loaderWrapper}>
-        {isLoading && (
-          <Loader
-            type="ThreeDots"
-            color="#00BFFF"
-            height={60}
-            width={60}
-            timeout={2000}
-          />
-        )}
+        <div className={s.spinnerWrapper}>{isLoading && <Spinner />}</div>
       </div>
     </>
   );
