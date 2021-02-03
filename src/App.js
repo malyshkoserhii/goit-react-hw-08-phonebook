@@ -1,7 +1,9 @@
+import { Layout } from 'antd';
 import { lazy, Suspense, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { authOperations, authSelectors } from './redux/auth';
+import './App.css';
 import AppBar from './components/AppBar';
 import PrivateRoute from './components/UserMenu/PrivateRoute';
 import PublicRoute from './components/UserMenu/PublicRoute';
@@ -23,6 +25,7 @@ const ContactsView = lazy(() =>
 const App = () => {
   const dispatch = useDispatch();
   const isBeingLoggedIn = useSelector(authSelectors.getIsBeingLoggedIn);
+  const { Header, Content } = Layout;
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
@@ -30,32 +33,38 @@ const App = () => {
 
   return (
     !isBeingLoggedIn && (
-      <>
-        <AppBar />
-        <Suspense fallback={<Spinner />}>
-          <Switch>
-            <>
-              <PublicRoute exact path="/">
-                <HomeView />
-              </PublicRoute>
-              <PublicRoute exact path="/register" restricted>
-                <RegisterView />
-              </PublicRoute>
-              <PublicRoute
-                exact
-                path="/login"
-                redirectTo="/contacts"
-                restricted
-              >
-                <LoginView />
-              </PublicRoute>
-              <PrivateRoute path="/contacts" redirectTo="/login">
-                <ContactsView />
-              </PrivateRoute>
-            </>
-          </Switch>
-        </Suspense>
-      </>
+      <Layout>
+        <Layout>
+          <Header>
+            <AppBar />
+          </Header>
+        </Layout>
+        <Content>
+          <Suspense fallback={<Spinner />}>
+            <Switch>
+              <>
+                <PublicRoute exact path="/">
+                  <HomeView />
+                </PublicRoute>
+                <PublicRoute exact path="/register" restricted>
+                  <RegisterView />
+                </PublicRoute>
+                <PublicRoute
+                  exact
+                  path="/login"
+                  redirectTo="/contacts"
+                  restricted
+                >
+                  <LoginView />
+                </PublicRoute>
+                <PrivateRoute path="/contacts" redirectTo="/login">
+                  <ContactsView />
+                </PrivateRoute>
+              </>
+            </Switch>
+          </Suspense>
+        </Content>
+      </Layout>
     )
   );
 };
