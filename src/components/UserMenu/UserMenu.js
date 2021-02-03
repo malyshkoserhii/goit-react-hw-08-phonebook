@@ -7,12 +7,12 @@ import defaultAvatar from './default-avatar.png';
 export default function UserMenu() {
   const avatar = defaultAvatar;
   const dispatch = useDispatch();
-  const name = useSelector(authSelectors.getUsername);
+  const email = useSelector(authSelectors.getUserEmail);
 
   return (
     <div className={s.container}>
       <img src={avatar} alt="" width="32" className={s.avatar} />
-      <span className={s.name}>Welcome, {name}</span>
+      <span className={s.name}>Welcome, {email}</span>
       <button type="button" onClick={() => dispatch(authOperations.logOut())}>
         Sign Out
       </button>
