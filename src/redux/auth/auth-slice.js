@@ -2,6 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
 
 const initialState = {
+  name: ['username'],
+  value: 'Ant Design',
+
   user: {
     name: null,
     email: null,

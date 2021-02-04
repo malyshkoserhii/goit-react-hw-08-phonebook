@@ -10,12 +10,12 @@ export default function UserMenu() {
   const email = useSelector(authSelectors.getUserEmail);
 
   return (
-    <div className={s.container}>
+    <>
       <img src={avatar} alt="" width="32" className={s.avatar} />
       <span className={s.name}>Welcome, {email}</span>
       <button type="button" onClick={() => dispatch(authOperations.logOut())}>
         Sign Out
       </button>
-    </div>
+    </>
   );
 }

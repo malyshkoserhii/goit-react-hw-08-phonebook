@@ -34,15 +34,15 @@ const App = () => {
   return (
     !isBeingLoggedIn && (
       <Layout>
-        <Layout>
-          <Header>
-            <AppBar />
-          </Header>
-        </Layout>
-        <Content>
+        {/* <Layout>
+          <Header> */}
+        <AppBar />
+        {/* </Header>
+        </Layout> */}
+        <>
           <Suspense fallback={<Spinner />}>
-            <Switch>
-              <>
+            <Content>
+              <Switch>
                 <PublicRoute exact path="/">
                   <HomeView />
                 </PublicRoute>
@@ -60,10 +60,10 @@ const App = () => {
                 <PrivateRoute path="/contacts" redirectTo="/login">
                   <ContactsView />
                 </PrivateRoute>
-              </>
-            </Switch>
+              </Switch>
+            </Content>
           </Suspense>
-        </Content>
+        </>
       </Layout>
     )
   );

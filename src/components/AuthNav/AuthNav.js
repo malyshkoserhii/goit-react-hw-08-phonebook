@@ -3,7 +3,7 @@ import s from './AuthNav.module.css';
 
 export default function AuthNav() {
   return (
-    <div>
+    <>
       <NavLink
         to="/register"
         exact
@@ -20,6 +20,6 @@ export default function AuthNav() {
       >
         Log In
       </NavLink>
-    </div>
+    </>
   );
 }
