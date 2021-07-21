@@ -1,67 +1,69 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Form, Input, Button } from 'antd';
 import { authOperations } from '../../redux/auth';
 import s from './RegisterView.module.css';
 
 export default function RegisterView() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setName(value);
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
+  const layout = {
+    labelCol: { span: 10 },
+    wrapperCol: { span: 4 },
+  };
+  const tailLayout = {
+    wrapperCol: { offset: 10, span: 10 },
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
+  const onFinish = values => {
+    dispatch(authOperations.register(values));
+  };
+
+  const onFinishFailed = errorInfo => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
-    <div>
-      <h1 className={s.registrationPageTitle}>Registration Page</h1>
+    <div className={s.container}>
+      <Form
+        {...layout}
+        name="basic"
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
+        <Form.Item
+          label="Name"
+          name="name"
+          value="name"
+          rules={[{ required: true, message: 'Please input your name!' }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
-        <label className={s.label}>
-          User Name
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
+        <Form.Item
+          label="Email"
+          name="email"
+          value="email"
+          rules={[{ required: true, message: 'Please input your email!' }]}
+        >
+          <Input />
+        </Form.Item>
 
-        <label className={s.label}>
-          Email
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
+        <Form.Item
+          label="Password"
+          name="password"
+          value="password"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-        <label className={s.label}>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-
-        <button type="submit">Sign In</button>
-      </form>
+        <Form.Item {...tailLayout}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 }

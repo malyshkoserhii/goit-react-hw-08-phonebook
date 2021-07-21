@@ -25,7 +25,7 @@ const ContactsView = lazy(() =>
 const App = () => {
   const dispatch = useDispatch();
   const isBeingLoggedIn = useSelector(authSelectors.getIsBeingLoggedIn);
-  const { Header, Content } = Layout;
+  const { Content } = Layout;
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
@@ -34,11 +34,7 @@ const App = () => {
   return (
     !isBeingLoggedIn && (
       <Layout>
-        {/* <Layout>
-          <Header> */}
         <AppBar />
-        {/* </Header>
-        </Layout> */}
         <>
           <Suspense fallback={<Spinner />}>
             <Content>
